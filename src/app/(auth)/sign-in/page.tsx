@@ -19,7 +19,7 @@ const AuthPage = () => {
               "text-lg font-medium"
             )}
           >
-            <Icons.logo className="h-6 w-6" />
+            <Icons.logo />
           </Link>
         </div>
       </div>
