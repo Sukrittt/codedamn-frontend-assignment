@@ -47,7 +47,7 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
 
   const [profileImageUrl, setProfileImageUrl] = useState(user.image);
   const [dateOfBirth, setDateOfBirth] = useState<Date | undefined>(
-    user.dateOfBirth ?? new Date()
+    user.dateOfBirth ?? undefined
   );
 
   //react-hook-form initialization
