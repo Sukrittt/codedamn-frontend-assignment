@@ -11,12 +11,8 @@ export const sidebarItems = [
   },
   {
     id: 3,
-    label: "Portfolio",
-    href: "/edit/portfolio",
-  },
-  {
-    id: 4,
     label: "Resume",
     href: "/edit/resume",
+    onBoarded: true,
   },
 ];

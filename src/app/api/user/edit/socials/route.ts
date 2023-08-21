@@ -34,6 +34,7 @@ export async function PATCH(req: Request) {
         githubUrl,
         instagramUrl,
         linkedInUrl,
+        onBoarding: true,
       },
     });
 

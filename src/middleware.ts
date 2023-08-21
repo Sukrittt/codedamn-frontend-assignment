@@ -3,14 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const isAuthenticated = await getToken({ req });
-  const onBoardingCompleted = isAuthenticated?.onBoarding;
 
   const pathname = req.nextUrl.pathname;
   const isSignInPage = pathname === "/sign-in";
-
-  if (isAuthenticated && !onBoardingCompleted && !isSignInPage) {
-    return NextResponse.redirect(new URL("/edit/personal", req.nextUrl));
-  }
 
   if (isSignInPage && isAuthenticated) {
     return NextResponse.redirect(new URL("/profile", req.nextUrl));
@@ -26,5 +21,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/sign-in", "/profile"],
+  matcher: ["/", "/sign-in"],
 };

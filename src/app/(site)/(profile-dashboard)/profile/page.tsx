@@ -23,6 +23,7 @@ const ProfilePage = async () => {
       <div className="flex gap-x-2 mx-8">
         <UserAvatar
           user={session.user}
+          profileAvatar
           className="h-44 w-44 -mt-[88px] border-[3px] border-white"
         />
         <div className="mt-4">

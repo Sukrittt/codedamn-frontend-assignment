@@ -28,6 +28,7 @@ import {
 
 const SocialsForm = ({ user }: { user: User }) => {
   const router = useRouter();
+
   const { loginToast, endErrorToast } = useCustomToast();
 
   //react-hook-form initialization
@@ -58,7 +59,7 @@ const SocialsForm = ({ user }: { user: User }) => {
       return data;
     },
     onSuccess: () => {
-      router.push("/edit/portfolio");
+      router.push("/profile");
       form.reset();
     },
     onError: (error) => {
