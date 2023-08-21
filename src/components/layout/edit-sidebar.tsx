@@ -1,19 +1,20 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
 
-import { sidebarItems } from "@/config";
 import { cn } from "@/lib/utils";
+import { sidebarItems } from "@/config";
 import { Icons } from "@/components/icons";
 
-export const EditSidebar = ({ session }: { session: Session | null }) => {
+export const EditSidebar = ({
+  onBoardingCompleted,
+}: {
+  onBoardingCompleted: boolean | undefined;
+}) => {
   const pathname = usePathname();
 
   return (
     <div className="flex w-full flex-col gap-2 bg-neutral-100 border rounded-xl py-3">
       {sidebarItems.map((item) => {
-        const onBoardingCompleted = session?.user.onBoarding;
-
         if (!onBoardingCompleted && item.onBoarded) return;
 
         return (
