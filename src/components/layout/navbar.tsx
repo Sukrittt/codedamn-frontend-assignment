@@ -30,7 +30,7 @@ const Navbar = async () => {
           </span>
         </div>
         <UserDropdown>
-          <UserAvatar user={session.user} className="h-8 w-8 cursor-pointer" />
+          <UserAvatar user={session.user} className="h-8 w-8" />
         </UserDropdown>
       </div>
     </div>

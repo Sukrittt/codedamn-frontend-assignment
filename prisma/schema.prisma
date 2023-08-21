@@ -40,8 +40,8 @@ model Session {
 }
 
 enum Gender {
-  Male
-  Female
+  male
+  female
 }
 
 model User {

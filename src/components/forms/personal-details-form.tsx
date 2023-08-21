@@ -6,15 +6,25 @@ import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { User } from "@prisma/client";
+import Image from "next/image";
+import Link from "next/link";
 
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useCustomToast } from "@/hooks/use-custom-toast";
 import {
   PersonalDetailsFormSchemaType,
@@ -25,17 +35,19 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { DatePicker } from "@/components/ui/date-picker";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
-import UserAvatar from "@/components/user-avatar";
-import Image from "next/image";
+import { Switch } from "@/components/ui/switch";
+import ImageUpload from "@/components/image-upload";
+import { cn } from "@/lib/utils";
 
 const PersonalDetailsForm = ({ user }: { user: User }) => {
   const router = useRouter();
   const { loginToast, endErrorToast } = useCustomToast();
-  const [dateOfBirth, setDateOfBirth] = useState<Date | undefined>(new Date());
-  const [profileImageUrl, setProfileImageUrl] = useState(
-    user.image ?? "/images/user-placeholder.png"
+
+  const [profileImageUrl, setProfileImageUrl] = useState(user.image);
+  const [dateOfBirth, setDateOfBirth] = useState<Date | undefined>(
+    user.dateOfBirth ?? new Date()
   );
 
   //react-hook-form initialization
@@ -44,8 +56,8 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
     defaultValues: {
       name: user.name || "",
       about: user.about || "",
+      gender: user.gender ?? null,
       profession: user.profession || "",
-      gender: user.gender,
       showAchievementBadges: user.showAchievementBadges,
       showFollowersAndFollowing: user.showFollowersAndFollowing,
       showXP: user.showXP,
@@ -57,8 +69,9 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
       const payload: personalDetailsServerFormSchemaType = {
         name: content.name,
         about: content.about,
-        profession: content.profession,
+        image: profileImageUrl,
         gender: content.gender,
+        profession: content.profession,
         showAchievementBadges: content.showAchievementBadges,
         showFollowersAndFollowing: content.showFollowersAndFollowing,
         showXP: content.showXP,
@@ -77,6 +90,13 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
         const statusCode = error.response?.status;
         if (statusCode === 401) {
           return loginToast();
+        }
+        if (statusCode === 422) {
+          return toast({
+            title: "Invalid Data",
+            description:
+              "Please check the data you have entered and try again.",
+          });
         }
       }
 
@@ -99,25 +119,40 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
   return (
     <Form {...form}>
       <form
-        className="grid w-full max-w-xl gap-5"
+        className="grid w-full max-w-xl gap-5 mb-36"
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <div className="flex items-center gap-x-4">
           <div className="relative h-16 w-16">
             <Image
-              src={profileImageUrl}
+              src={profileImageUrl || "/images/user-placeholder.png"}
               alt={`${user.name}'s picture`}
-              className="object-cover rounded-full"
+              className="object-cover rounded-full border border-input"
               fill
             />
           </div>
           <div className="space-x-2">
-            <Button size="sm">Upload new picture</Button>
-            <Button size="sm" variant="ghost" className="bg-accent">
+            <ImageUpload
+              title="Upload new picture"
+              description="This picture will be visible to all."
+              setFileUrl={setProfileImageUrl}
+            >
+              <Button size="sm" type="button">
+                Upload new picture
+              </Button>
+            </ImageUpload>
+            <Button
+              size="sm"
+              variant="ghost"
+              type="button"
+              className="bg-accent"
+              onClick={() => setProfileImageUrl("")}
+            >
               Delete
             </Button>
           </div>
         </div>
+
         <FormField
           control={form.control}
           name="name"
@@ -141,6 +176,7 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="about"
@@ -158,6 +194,7 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="profession"
@@ -175,6 +212,7 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
             </FormItem>
           )}
         />
+
         <FormItem className="flex flex-col space-y-3">
           <FormLabel>Date of birth</FormLabel>
           <FormControl>
@@ -182,54 +220,140 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
           </FormControl>
           <FormMessage />
         </FormItem>
-        {/* <FormField
+
+        <FormField
           control={form.control}
-          name="coverImage"
+          name="gender"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Cover Image</FormLabel>
-              <FormControl>
-                <FileInput
-                  setFile={setFile}
-                  placeholder="Enter a trailer link."
-                  disabled={isLoading}
-                  {...field}
-                />
-              </FormControl>
+              <FormLabel>Gender</FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value as string}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="What is your gender" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem className="cursor-pointer" value="male">
+                    Male
+                  </SelectItem>
+                  <SelectItem className="cursor-pointer" value="female">
+                    Female
+                  </SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
         />
-                <FormField
-          control={form.control}
-          name="gender"
-          render={() => (
-            <FormItem className="flex flex-col gap-y-1">
-              <FormLabel>Gender</FormLabel>
-              <FormControl>
-                <Combobox
-                  data={genres}
-                  placeholder="Select genre..."
-                  setState={setGenre}
-                  disabled={isLoading}
-                  large
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
-        <div className="w-full flex justify-end">
-          <Button className="w-fit" disabled={isLoading} size="sm">
-            {isLoading && (
-              <Icons.spinner
-                className="mr-2 h-4 w-4 animate-spin"
-                aria-hidden="true"
-              />
+
+        <div>
+          <h1 className="text-lg tracking-tight font-bold text-neutral-800">
+            Section visiblity
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Select which sections and content should show on your profile page.
+          </p>
+        </div>
+
+        <div className="rounded-xl bg-accent p-4 space-y-4">
+          <FormField
+            control={form.control}
+            name="showFollowersAndFollowing"
+            render={({ field }) => (
+              <FormItem className="flex items-center justify-between ">
+                <div className="space-y-0.5">
+                  <FormLabel className="text-base tracking-tight font-semibold">
+                    Followers and following
+                  </FormLabel>
+                  <FormDescription>
+                    Shows your followers and the users you follow on codedamn
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
             )}
-            Save changes
-            <span className="sr-only">Save changes</span>
-          </Button>
+          />
+
+          <FormField
+            control={form.control}
+            name="showXP"
+            render={({ field }) => (
+              <FormItem className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <FormLabel className="text-base tracking-tight font-semibold">
+                    XP
+                  </FormLabel>
+                  <FormDescription>
+                    Shows the XP you have earned
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="showAchievementBadges"
+            render={({ field }) => (
+              <FormItem className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <FormLabel className="text-base tracking-tight font-semibold">
+                    Achievement badges
+                  </FormLabel>
+                  <FormDescription>
+                    Shows your relative percentile and proficiency
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="w-full flex justify-end">
+          <div className="space-x-2">
+            {user.onBoarding && (
+              <Link
+                href="/profile"
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "sm" }),
+                  "bg-accent font-semibold hover:border-input transition"
+                )}
+              >
+                Cancel
+              </Link>
+            )}
+            <Button className="w-fit" disabled={isLoading} size="sm">
+              {isLoading && (
+                <Icons.spinner
+                  className="mr-2 h-4 w-4 animate-spin"
+                  aria-hidden="true"
+                />
+              )}
+              Save changes
+              <span className="sr-only">Save changes</span>
+            </Button>
+          </div>
         </div>
       </form>
     </Form>
