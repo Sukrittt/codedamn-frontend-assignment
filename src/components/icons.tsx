@@ -1,12 +1,16 @@
 import {
   Bell,
   Chrome,
+  HeartPulse,
   Info,
   Loader2,
   LogOut,
   LucideProps,
   Search,
+  Sparkle,
+  Trophy,
   User,
+  X,
   Zap,
 } from "lucide-react";
 
@@ -60,7 +64,10 @@ export const Icons = {
       />
     </svg>
   ),
+  experience: Sparkle,
   thunderbolt: Zap,
+  trophy: Trophy,
+  karma: HeartPulse,
   search: Search,
   notification: Bell,
   user: User,
@@ -68,4 +75,5 @@ export const Icons = {
   logout: LogOut,
   chrome: Chrome,
   spinner: Loader2,
+  cross: X,
 };

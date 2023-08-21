@@ -58,8 +58,8 @@ model User {
   coverImage String?
   image      String?
 
-  showFollowersAndFollowing Boolean @default(true)
   showXP                    Boolean @default(true)
+  showFollowersAndFollowing Boolean @default(true)
   showAchievementBadges     Boolean @default(true)
 
   githubUrl    String?
@@ -72,5 +72,31 @@ model User {
   accounts Account[]
   sessions Session[]
 
+  projects     Projects[]
+  certificates Certificates[]
+
   createdAt DateTime @default(now())
+}
+
+model Projects {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  image  String
+  title  String   @unique
+  skills String[]
+  link   String
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Certificates {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  title          String
+  issuedOn       DateTime
+  credentialLink String
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

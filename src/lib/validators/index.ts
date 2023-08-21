@@ -37,3 +37,10 @@ export const personalDetailsServerFormSchema = personalDetailsFormSchema.extend(
 export type personalDetailsServerFormSchemaType = z.infer<
   typeof personalDetailsServerFormSchema
 >;
+
+//cover image
+export const updatecoverImage = z.object({
+  coverImage: z.string(),
+});
+
+export type UpdatecoverImageType = z.infer<typeof updatecoverImage>;

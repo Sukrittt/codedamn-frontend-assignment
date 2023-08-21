@@ -73,6 +73,7 @@ const SocialsForm = ({ user }: { user: User }) => {
             title: "Invalid Data",
             description:
               "Please check the data you have entered and try again.",
+            variant: "destructive",
           });
         }
       }
