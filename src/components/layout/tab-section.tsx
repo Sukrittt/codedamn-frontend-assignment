@@ -1,4 +1,8 @@
-import { Certificates, Projects as ProjectType, User } from "@prisma/client";
+import {
+  Certificates as CertificateType,
+  Projects as ProjectType,
+  User,
+} from "@prisma/client";
 
 import {
   Card,
@@ -6,15 +10,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Stats from "@/components/profile/stats";
 import Projects from "@/components/profile/projects";
 import CreateProjectSheet from "@/components/create-project-sheet";
-import PlayGround from "@/components/profile/playgroud";
+import PlayGrounds from "@/components/profile/playgrouds";
+import Certificates from "@/components/profile/certificates";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AddCertificateSheet from "@/components/add-certificate-sheet";
 
 type ExtendedUser = User & {
   projects: ProjectType[];
-  certificates: Certificates[];
+  certificates: CertificateType[];
 };
 
 export const TabSection = ({ user }: { user: ExtendedUser }) => {
@@ -45,7 +51,14 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
           </div>
           <Projects projects={user.projects} />
         </div>
-        <PlayGround />
+        <PlayGrounds />
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold text-2xl tracking-tight">Certificates</h1>
+            <AddCertificateSheet />
+          </div>
+          <Certificates certificates={user.certificates} />
+        </div>
       </TabsContent>
       <TabsContent value="resume">
         <Card>

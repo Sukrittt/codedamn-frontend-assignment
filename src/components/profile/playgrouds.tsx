@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
-const PlayGround = () => {
+const PlayGrounds = () => {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
@@ -28,7 +28,7 @@ const PlayGround = () => {
   );
 };
 
-export default PlayGround;
+export default PlayGrounds;
 
 const PlaygroundDisplay = () => {
   const dummyPlaygrounds = [

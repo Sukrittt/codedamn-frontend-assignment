@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Icons } from "@/components/icons";
 
 interface DatePickerProps {
   value: Date | undefined;
@@ -39,7 +39,7 @@ export function DatePicker({ setValue, value }: DatePickerProps) {
         >
           <div className="flex justify-between w-full items-center">
             {value ? format(value, "PPP") : <span>DD/MM/YY</span>}
-            <CalendarIcon className="h-4 w-4" />
+            <Icons.calendar className="h-4 w-4" />
           </div>
         </Button>
       </PopoverTrigger>

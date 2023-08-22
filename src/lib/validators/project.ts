@@ -17,3 +17,9 @@ export const projectFormSchemaServer = projectFormSchema.extend({
 export type projectFormSchemaServerType = z.infer<
   typeof projectFormSchemaServer
 >;
+
+export const deleteProjectSchema = z.object({
+  projectId: z.string(),
+});
+
+export type DeleteProjectSchemaType = z.infer<typeof deleteProjectSchema>;

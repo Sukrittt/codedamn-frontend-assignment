@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Projects } from "@prisma/client";
 import Image from "next/image";
 
+import ProjectDropdown from "@/components/profile/project-dropdown";
+
 interface ProjectsProps {
   projects: Projects[];
 }
@@ -19,7 +21,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
       {projects.map((project) => (
         <div
           key={project.id}
-          className="rounded-lg flex flex-col gap-y-4 bg-accent p-4"
+          className="rounded-lg flex flex-col gap-y-4 bg-accent p-4 border"
         >
           <div className="relative h-80 w-full">
             <Image
@@ -31,9 +33,12 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
           </div>
 
           <div>
-            <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
-              {project.title}
-            </h1>
+            <div className="flex justify-between items-center">
+              <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
+                {project.title}
+              </h1>
+              <ProjectDropdown projectId={project.id} />
+            </div>
             <div className="text-muted-foreground text-sm">
               {project.skills.map((skill, index) => {
                 const showBullet = index !== project.skills.length - 1;
