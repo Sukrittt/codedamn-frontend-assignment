@@ -14,7 +14,7 @@ import Certificates from "@/components/profile/certificates";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AddCertificateSheet from "@/components/add-certificate-sheet";
 import Experiences from "@/components/profile/experiences";
-import Educations from "@/components/profile/education";
+import Educations from "@/components/profile/educations";
 import AddExperienceSheet from "@/components/add-experience-sheet";
 import AddEducationSheet from "@/components/add-education-sheet";
 

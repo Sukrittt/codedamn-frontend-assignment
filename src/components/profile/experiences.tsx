@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Experiences } from "@prisma/client";
 import { format } from "date-fns";
 
+import ExperienceDropdown from "@/components/profile/experience-dropdown";
+
 interface ExperiencesProps {
   experiences: Experiences[];
 }
@@ -23,9 +25,12 @@ const Experiences: FC<ExperiencesProps> = ({ experiences }) => {
           className="bg-accent border p-4 rounded-xl space-y-4"
         >
           <div className="space-y-1">
-            <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
-              {experience.title}
-            </h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
+                {experience.title}
+              </h1>
+              <ExperienceDropdown experienceId={experience.id} />
+            </div>
             <div className="flex items-center justify-between tracking-tight">
               <div className="flex items-center gap-x-2 text-neutral-700">
                 <span>{experience.location}</span>

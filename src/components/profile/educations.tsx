@@ -1,6 +1,8 @@
 import { FC } from "react";
-import { Educations } from "@prisma/client";
 import { format } from "date-fns";
+import { Educations } from "@prisma/client";
+
+import EducationDropdown from "@/components/profile/education-dropdown";
 
 interface EducationsProps {
   educations: Educations[];
@@ -23,9 +25,12 @@ const Educations: FC<EducationsProps> = ({ educations }) => {
           className="bg-accent border p-4 rounded-xl space-y-4"
         >
           <div className="space-y-1">
-            <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
-              {education.schoolName}
-            </h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-lg text-neutral-800 tracking-tight font-bold">
+                {education.schoolName}
+              </h1>
+              <EducationDropdown educationId={education.id} />
+            </div>
             <div className="flex items-center justify-between tracking-tight">
               <div className="flex items-center gap-x-2 text-neutral-700">
                 <span>{education.location}</span>
