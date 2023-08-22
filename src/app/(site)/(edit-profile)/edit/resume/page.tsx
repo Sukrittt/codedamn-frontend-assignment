@@ -2,9 +2,9 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getAuthSession } from "@/lib/auth";
-import PersonalDetailsForm from "@/components/forms/personal-details-form";
+import EditResumeForm from "@/components/forms/edit-resume-form";
 
-const PersonalDetailsPage = async () => {
+const ResumePage = async () => {
   const session = await getAuthSession();
 
   if (!session) redirect("/sign-in");
@@ -17,7 +17,7 @@ const PersonalDetailsPage = async () => {
 
   if (!currentUser) redirect("/sign-in");
 
-  return <PersonalDetailsForm user={currentUser} />;
+  return <EditResumeForm user={currentUser} />;
 };
 
-export default PersonalDetailsPage;
+export default ResumePage;

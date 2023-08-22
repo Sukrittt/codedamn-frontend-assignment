@@ -4,12 +4,6 @@ import {
   User,
 } from "@prisma/client";
 
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Stats from "@/components/profile/stats";
 import Projects from "@/components/profile/projects";
 import CreateProjectSheet from "@/components/create-project-sheet";
@@ -60,13 +54,55 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
           <Certificates certificates={user.certificates} />
         </div>
       </TabsContent>
-      <TabsContent value="resume">
-        <Card>
-          <CardHeader>
-            <CardTitle>Resume</CardTitle>
-            <CardDescription>Resume details</CardDescription>
-          </CardHeader>
-        </Card>
+      <TabsContent value="resume" className="space-y-8">
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            About me
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            {user.about}
+          </div>
+        </div>
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            Work experience
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            <p>Work Experience</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            Education
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            <p>Education</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            Tech skills
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            <p>Tech skills</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            Interests
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            <p>Interests</p>
+          </div>
+        </div>
+        <div className="mt-4 space-y-4">
+          <h1 className="font-bold text-2xl tracking-tight text-center">
+            Languages
+          </h1>
+          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+            <p>Languages</p>
+          </div>
+        </div>
       </TabsContent>
     </Tabs>
   );

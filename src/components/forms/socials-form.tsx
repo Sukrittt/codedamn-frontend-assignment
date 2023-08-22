@@ -59,7 +59,7 @@ const SocialsForm = ({ user }: { user: User }) => {
       return data;
     },
     onSuccess: () => {
-      router.push("/profile");
+      router.push("/edit/resume");
       form.reset();
     },
     onError: (error) => {
@@ -233,17 +233,15 @@ const SocialsForm = ({ user }: { user: User }) => {
 
         <div className="w-full flex justify-end">
           <div className="space-x-2">
-            {user.onBoarding && (
-              <Link
-                href="/profile"
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "sm" }),
-                  "bg-accent font-semibold hover:border-input transition"
-                )}
-              >
-                Cancel
-              </Link>
-            )}
+            <Link
+              href="/profile"
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
+                "bg-accent font-semibold hover:border-input transition"
+              )}
+            >
+              Cancel
+            </Link>
             <Button className="w-fit" disabled={isLoading} size="sm">
               {isLoading && (
                 <Icons.spinner

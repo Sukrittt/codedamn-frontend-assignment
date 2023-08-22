@@ -1,5 +1,6 @@
 import {
   Bell,
+  Bookmark,
   CalendarIcon,
   Chrome,
   HeartPulse,
@@ -8,6 +9,7 @@ import {
   LogOut,
   LucideProps,
   MoreVertical,
+  Pencil,
   Search,
   Sparkle,
   Trash2,
@@ -83,4 +85,6 @@ export const Icons = {
   calendar: CalendarIcon,
   delete: Trash2,
   options: MoreVertical,
+  pencil: Pencil,
+  bookmark: Bookmark,
 };

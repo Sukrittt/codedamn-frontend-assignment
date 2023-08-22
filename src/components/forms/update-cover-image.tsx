@@ -9,6 +9,7 @@ import { Icons } from "@/components/icons";
 import ImageUpload from "@/components/image-upload";
 import { UpdatecoverImageType } from "@/lib/validators";
 import { useCustomToast } from "@/hooks/use-custom-toast";
+import { toast } from "@/hooks/use-toast";
 
 const UpdateCoverImage = () => {
   const [fileUrl, setFileUrl] = useState("");
@@ -25,6 +26,10 @@ const UpdateCoverImage = () => {
       return data;
     },
     onSuccess: () => {
+      toast({
+        title: "Success",
+        description: "Cover image updated successfully.",
+      });
       router.refresh();
     },
     onError: (error) => {

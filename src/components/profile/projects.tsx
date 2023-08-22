@@ -27,6 +27,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
             <Image
               src={project.image}
               alt={`${project.title}'s overview`}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
               className="object-contain"
             />

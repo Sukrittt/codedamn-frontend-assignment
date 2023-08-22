@@ -48,7 +48,10 @@ model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
+  bio           String?
+  location      String?
   about         String?
+  lookingForJob Boolean   @default(false)
   profession    String?
   dateOfBirth   DateTime?
   gender        Gender?
@@ -69,11 +72,17 @@ model User {
   dribbbleUrl  String?
   behanceUrl   String?
 
+  techSkills String[]
+  interests  String[]
+  languages  String[]
+
   accounts Account[]
   sessions Session[]
 
   projects     Projects[]
   certificates Certificates[]
+  experience   Experiences[]
+  education    Educations[]
 
   createdAt DateTime @default(now())
 }
@@ -96,6 +105,36 @@ model Certificates {
   title          String
   issuedOn       DateTime
   credentialLink String
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Experiences {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  title       String
+  location    String
+  company     String
+  description String
+
+  startDate DateTime
+  endDate   DateTime?
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Educations {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  schoolName  String
+  location    String
+  description String
+  degree      String
+
+  startDate DateTime
+  endDate   DateTime?
 
   userId String @db.ObjectId
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)

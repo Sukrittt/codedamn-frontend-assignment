@@ -29,5 +29,12 @@ export const useCustomToast = () => {
     });
   };
 
-  return { loginToast, endErrorToast };
+  const dummyFeatureToast = () => {
+    toast({
+      title: "Dummy feature",
+      description: "This feature is just a dummy and does not work.",
+    });
+  };
+
+  return { loginToast, endErrorToast, dummyFeatureToast };
 };

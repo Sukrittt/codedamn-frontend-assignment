@@ -3,9 +3,11 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { toast } from "@/hooks/use-toast";
+import { useCustomToast } from "@/hooks/use-custom-toast";
 
 const PlayGrounds = () => {
+  const { dummyFeatureToast } = useCustomToast();
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
@@ -13,12 +15,7 @@ const PlayGrounds = () => {
         <Button
           variant="secondary"
           className="tracking-tight font-medium"
-          onClick={() =>
-            toast({
-              title: "Dummy feature",
-              description: "This feature is just a dummy and does not work.",
-            })
-          }
+          onClick={() => dummyFeatureToast()}
         >
           Create new playground
         </Button>
@@ -80,6 +77,7 @@ const PlaygroundDisplay = () => {
                 <Image
                   src="/images/user1.avif"
                   alt="User Avatar"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="rounded-full object-cover"
                   fill
                 />
@@ -88,6 +86,7 @@ const PlaygroundDisplay = () => {
                 <Image
                   src="/images/user2.avif"
                   alt="User Avatar"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="rounded-full object-cover -ml-1"
                   fill
                 />

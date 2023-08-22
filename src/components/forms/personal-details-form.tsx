@@ -129,6 +129,7 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
               src={profileImageUrl || "/images/user-placeholder.png"}
               alt={`${user.name}'s picture`}
               className="object-cover rounded-full border border-input"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           </div>
@@ -333,17 +334,15 @@ const PersonalDetailsForm = ({ user }: { user: User }) => {
 
         <div className="w-full flex justify-end">
           <div className="space-x-2">
-            {user.onBoarding && (
-              <Link
-                href="/profile"
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "sm" }),
-                  "bg-accent font-semibold hover:border-input transition"
-                )}
-              >
-                Cancel
-              </Link>
-            )}
+            <Link
+              href="/profile"
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
+                "bg-accent font-semibold hover:border-input transition"
+              )}
+            >
+              Cancel
+            </Link>
             <Button className="w-fit" disabled={isLoading} size="sm">
               {isLoading && (
                 <Icons.spinner

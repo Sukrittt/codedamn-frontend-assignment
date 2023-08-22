@@ -33,7 +33,7 @@ export function DatePicker({ setValue, value }: DatePickerProps) {
         <Button
           variant="outline"
           className={cn(
-            "w-full border-input justify-start text-left font-normal",
+            "w-full border-input justify-start text-left font-normal focus-visible:ring-offset-2",
             !date && "text-muted-foreground"
           )}
         >

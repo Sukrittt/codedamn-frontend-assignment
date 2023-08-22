@@ -176,9 +176,9 @@ const AddCertificateSheet = () => {
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
-                          variant={"outline"}
+                          variant="outline"
                           className={cn(
-                            "pl-3 text-left font-normal",
+                            "pl-3 text-left font-normal focus-visible:ring-offset-2",
                             !field.value && "text-muted-foreground"
                           )}
                         >

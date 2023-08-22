@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
@@ -11,10 +12,14 @@ export const EditSidebar = () => {
   return (
     <div className="flex w-full flex-col gap-2 bg-neutral-100 border rounded-xl py-3">
       {sidebarItems.map((item) => (
-        <div key={item.id} className="focus:outline-none group">
+        <Link
+          href={item.href}
+          key={item.id}
+          className="focus:outline-none group"
+        >
           <span
             className={cn(
-              "relative group flex w-full items-center rounded-md border border-transparent px-2 py-1 group-focus:bg-muted group-focus:text-foreground group-focus:font-medium transition-all pointer-events-none",
+              "relative group flex w-full items-center rounded-md border border-transparent px-2 py-1 group-focus:bg-muted group-focus:text-foreground group-focus:font-medium transition-all pointer-events-none group-hover:text-foreground group-hover:font-medium",
               pathname === item.href
                 ? "font-medium text-foreground"
                 : "text-muted-foreground"
@@ -33,7 +38,7 @@ export const EditSidebar = () => {
               <span className="tracking-tight text-sm">{item.label}</span>
             </div>
           </span>
-        </div>
+        </Link>
       ))}
     </div>
   );

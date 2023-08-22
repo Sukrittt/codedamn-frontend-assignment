@@ -131,7 +131,13 @@ const CreateProjectSheet = () => {
   }
 
   const addSkill = () => {
-    if (eachSkill.length === 0) return;
+    if (eachSkill.length === 0 || eachSkill.length > 50) {
+      return toast({
+        title: "Too short/long",
+        description: "Please enter a valid skill.",
+        variant: "destructive",
+      });
+    }
 
     const alreadyExists = skills.includes(eachSkill);
 
