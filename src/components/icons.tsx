@@ -8,6 +8,7 @@ import {
   Loader2,
   LogOut,
   LucideProps,
+  MapPin,
   MoreVertical,
   Pencil,
   Search,
@@ -87,4 +88,5 @@ export const Icons = {
   options: MoreVertical,
   pencil: Pencil,
   bookmark: Bookmark,
+  location: MapPin,
 };

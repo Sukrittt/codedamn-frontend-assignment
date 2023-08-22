@@ -4,6 +4,9 @@ import { db } from "@/lib/db";
 import { getAuthSession } from "@/lib/auth";
 import PersonalDetailsForm from "@/components/forms/personal-details-form";
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 const PersonalDetailsPage = async () => {
   const session = await getAuthSession();
 

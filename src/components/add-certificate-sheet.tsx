@@ -126,7 +126,7 @@ const AddCertificateSheet = () => {
         </SheetHeader>
         <Form {...form}>
           <form
-            className="grid w-full max-w-xl gap-5 mt-8"
+            className="grid w-full max-w-xl gap-5 mt-4"
             id="add-certificate-sheet"
             onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
           >

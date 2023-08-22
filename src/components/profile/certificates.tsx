@@ -12,12 +12,13 @@ interface CertificatesProps {
 }
 
 const Certificates: FC<CertificatesProps> = ({ certificates }) => {
-  if (certificates.length === 0)
+  if (certificates.length === 0) {
     return (
       <div className="h-[200px] border rounded-xl flex items-center justify-center text-muted-foreground">
         No certificates on display
       </div>
     );
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

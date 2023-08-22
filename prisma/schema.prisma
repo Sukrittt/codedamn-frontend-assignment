@@ -116,7 +116,7 @@ model Experiences {
   title       String
   location    String
   company     String
-  description String
+  description String?
 
   startDate DateTime
   endDate   DateTime?
@@ -130,8 +130,8 @@ model Educations {
 
   schoolName  String
   location    String
-  description String
-  degree      String
+  description String?
+  degree      String?
 
   startDate DateTime
   endDate   DateTime?

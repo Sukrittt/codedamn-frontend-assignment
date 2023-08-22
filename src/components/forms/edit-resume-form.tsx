@@ -23,6 +23,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import {
+  ResumeFormSchemaServerType,
   ResumeFormSchemaType,
   resumeFormSchema,
 } from "@/lib/validators/resume";
@@ -36,9 +37,9 @@ const EditResumeForm = ({ user }: { user: User }) => {
   const [eachInterest, setEachInterest] = useState("");
   const [eachLanguage, setEachLanguage] = useState("");
 
-  const [techSkills, setTechSkills] = useState<string[]>([]);
-  const [interests, setInterests] = useState<string[]>([]);
-  const [languages, setLanguages] = useState<string[]>([]);
+  const [techSkills, setTechSkills] = useState<string[]>(user.techSkills ?? []);
+  const [interests, setInterests] = useState<string[]>(user.interests ?? []);
+  const [languages, setLanguages] = useState<string[]>(user.languages ?? []);
 
   //react-hook-form initialization
   const form = useForm<ResumeFormSchemaType>({
@@ -52,7 +53,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
 
   const { mutate: updatePersonalDetails, isLoading } = useMutation({
     mutationFn: async (content: ResumeFormSchemaType) => {
-      const payload: ResumeFormSchemaType = {
+      const payload: ResumeFormSchemaServerType = {
         bio: content.bio,
         location: content.location,
         lookingForJob: content.lookingForJob,
@@ -61,7 +62,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
         languages,
       };
 
-      const { data } = await axios.patch("/api/user/resume/edit", payload);
+      const { data } = await axios.patch("/api/user/edit/resume", payload);
       return data;
     },
     onSuccess: () => {
@@ -87,10 +88,6 @@ const EditResumeForm = ({ user }: { user: User }) => {
       endErrorToast();
     },
   });
-
-  function onSubmit(content: ResumeFormSchemaType) {
-    updatePersonalDetails(content);
-  }
 
   const addTechSkill = () => {
     if (eachTechSkill.length === 0 || eachTechSkill.length > 50) {
@@ -161,12 +158,36 @@ const EditResumeForm = ({ user }: { user: User }) => {
     setEachLanguage("");
   };
 
+  function onSubmit(content: ResumeFormSchemaType) {
+    updatePersonalDetails(content);
+  }
+
   return (
     <Form {...form}>
       <form
         className="grid w-full max-w-xl gap-5 mb-36"
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
+        <FormField
+          control={form.control}
+          name="lookingForJob"
+          render={({ field }) => (
+            <FormItem className="flex items-center justify-between">
+              <div className="space-y-0.5">
+                <FormLabel className="text-base tracking-tight font-semibold">
+                  Are you looking for a job?
+                </FormLabel>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="bio"
@@ -218,7 +239,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
           <FormItem>
             <FormLabel>Teck skills</FormLabel>
             <Input
-              placeholder="Type the skills required in this project."
+              placeholder="Enter the skills required in this project."
               value={eachTechSkill}
               onChange={(e) => setEachTechSkill(e.target.value)}
               disabled={isLoading}
@@ -229,6 +250,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
                 }
               }}
             />
+
             <div className="flex justify-end">
               <Button
                 variant="outline"
@@ -269,7 +291,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
           <FormItem>
             <FormLabel>Interests</FormLabel>
             <Input
-              placeholder="Type the skills required in this project."
+              placeholder="Enter your interests."
               value={eachInterest}
               onChange={(e) => setEachInterest(e.target.value)}
               disabled={isLoading}
@@ -280,6 +302,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
                 }
               }}
             />
+
             <div className="flex justify-end">
               <Button
                 variant="outline"
@@ -322,7 +345,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
           <FormItem>
             <FormLabel>Languages</FormLabel>
             <Input
-              placeholder="Type the skills required in this project."
+              placeholder="Enter the languages you speak."
               value={eachLanguage}
               onChange={(e) => setEachLanguage(e.target.value)}
               disabled={isLoading}
@@ -370,26 +393,6 @@ const EditResumeForm = ({ user }: { user: User }) => {
             </div>
           )}
         </div>
-
-        <FormField
-          control={form.control}
-          name="lookingForJob"
-          render={({ field }) => (
-            <FormItem className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <FormLabel className="text-base tracking-tight font-semibold">
-                  Are you looking for a job?
-                </FormLabel>
-              </div>
-              <FormControl>
-                <Switch
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
 
         <div className="w-full flex justify-end mt-2">
           <div className="space-x-2">

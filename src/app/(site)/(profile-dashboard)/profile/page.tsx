@@ -28,13 +28,15 @@ const ProfilePage = async () => {
     include: {
       projects: true,
       certificates: true,
+      experience: true,
+      education: true,
     },
   });
 
   if (!currentUser) redirect("/sign-in");
 
   return (
-    <div className="m-12 pb-12 lg:mx-28  space-y-8">
+    <div className="m-12 pb-12 lg:mx-36 space-y-8">
       <div className="border rounded-xl overflow-hidden pb-6">
         <div
           className={cn("h-[250px] relative", {
@@ -59,12 +61,19 @@ const ProfilePage = async () => {
             profileAvatar
             className="h-44 w-44 -mt-[88px] border-[3px] border-white"
           />
-          <div className="mt-4 sapce-y-8 w-full">
+          <div className="mt-8 flex flex-col gap-y-4 w-full">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-neutral-800">
-                {currentUser.name}
-              </h1>
-              <Link
+              <div className="flex gap-x-2 items-center">
+                <h1 className="text-4xl font-bold text-neutral-800">
+                  {currentUser.name}
+                </h1>
+                {currentUser.lookingForJob && (
+                  <span className="py-1 px-3 bg-blue-200 text-[#075985] font-semibold text-sm rounded-md">
+                    Looking for job
+                  </span>
+                )}
+              </div>
+              <a
                 href="/edit/personal"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
@@ -72,8 +81,29 @@ const ProfilePage = async () => {
                 )}
               >
                 <Icons.pencil className="h-4 w-4" />
-              </Link>
+              </a>
             </div>
+            <div className="text-muted-foreground flex flex-col gap-y-1">
+              <span>{currentUser.bio}</span>
+              <div className="text-neutral-400 flex items-center">
+                <Icons.location className="h-4 w-4 mr-1" />
+                {currentUser.location}
+              </div>
+            </div>
+            {currentUser.techSkills.length > 0 && (
+              <div className="flex gap-2 flex-wrap">
+                {currentUser.techSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="relative bg-accent rounded-lg py-1 px-4"
+                  >
+                    <span className="tracking-tight text-sm font-medium">
+                      {skill}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="flex items-center justify-between mt-4">
               <SocialLinks user={currentUser} />
               <ProfileContact />
