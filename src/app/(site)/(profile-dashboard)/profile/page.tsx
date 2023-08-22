@@ -40,7 +40,7 @@ const ProfilePage = async () => {
       <div className="border rounded-xl overflow-hidden pb-6">
         <div
           className={cn("h-[250px] relative", {
-            "bg-gradient-to-r from-blue-500 via-sky-500 to-blue-700 to-90%":
+            "bg-gradient-to-r from-blue-500 via-sky-500 to-purple-600 to-90%":
               !currentUser.coverImage,
           })}
         >

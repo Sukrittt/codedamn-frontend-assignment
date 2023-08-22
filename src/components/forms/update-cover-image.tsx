@@ -45,7 +45,7 @@ const UpdateCoverImage = () => {
   });
 
   useEffect(() => {
-    if (fileUrl) {
+    if (fileUrl.length > 0) {
       updateImage();
       setFileUrl("");
     }
