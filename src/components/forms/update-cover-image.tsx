@@ -31,6 +31,7 @@ const UpdateCoverImage = () => {
         description: "Cover image updated successfully.",
       });
       router.refresh();
+      setFileUrl("");
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
@@ -45,9 +46,8 @@ const UpdateCoverImage = () => {
   });
 
   useEffect(() => {
-    if (fileUrl.length > 0) {
+    if (fileUrl) {
       updateImage();
-      setFileUrl("");
     }
   }, [fileUrl, updateImage]);
 
