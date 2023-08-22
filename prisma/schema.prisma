@@ -82,7 +82,7 @@ model Projects {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   image  String
-  title  String   @unique
+  title  String
   skills String[]
   link   String
 

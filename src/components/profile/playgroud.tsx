@@ -60,7 +60,7 @@ const PlaygroundDisplay = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {dummyPlaygrounds.map((playground) => (
+      {dummyPlaygrounds.map((playground, index) => (
         <div
           key={playground.id}
           className="bg-accent border rounded-xl p-4 flex flex-col gap-y-2"
@@ -71,7 +71,7 @@ const PlaygroundDisplay = () => {
           <div className="flex gap-x-2 items-center text-muted-foreground">
             <span>{playground.tech}</span>
             <span>•</span>
-            <span>{Math.ceil(Math.random() * 11)} min ago</span>
+            <span>{(index + 1) * 3} min ago</span>
           </div>
 
           <div className="flex gap-x-2 items-center text-sm">
@@ -97,7 +97,7 @@ const PlaygroundDisplay = () => {
             <span className="text-muted-foreground">Shared with </span>
             <div className="flex gap-x-2 items-center text-muted-foreground">
               {playground.sharedUsers.map((user, index) => (
-                <span key={index}>
+                <div key={index}>
                   <span className="font-bold text-neutral-500">{user}</span>
                   <span
                     className={cn({
@@ -111,9 +111,9 @@ const PlaygroundDisplay = () => {
                       hidden: index !== playground.sharedUsers.length - 1,
                     })}
                   >
-                    ... +{Math.ceil(Math.random() * 11)} more
+                    ... +{(index + 1) * 5} more
                   </span>
-                </span>
+                </div>
               ))}
             </div>
           </div>
