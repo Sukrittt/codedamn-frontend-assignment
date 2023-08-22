@@ -87,42 +87,60 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
         </div>
         <div className="space-y-4">
           <h1 className="font-bold text-2xl tracking-tight">Tech skills</h1>
-          <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
-            {user.techSkills.map((skill, index) => (
-              <span
-                key={index}
-                className="rounded-lg bg-accent py-2 px-3 border"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+          {user.techSkills.length === 0 ? (
+            <div className="h-[100px] border rounded-xl flex items-center justify-center text-muted-foreground">
+              No skills on display
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+              {user.techSkills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="rounded-lg bg-accent py-2 px-3 border"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <div className="space-y-4">
           <h1 className="font-bold text-2xl tracking-tight">Interests</h1>
-          <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
-            {user.interests.map((interest, index) => (
-              <span
-                key={index}
-                className="rounded-lg bg-accent py-2 px-3 border"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
+          {user.interests.length === 0 ? (
+            <div className="h-[100px] border rounded-xl flex items-center justify-center text-muted-foreground">
+              No interests on display
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+              {user.interests.map((interest, index) => (
+                <span
+                  key={index}
+                  className="rounded-lg bg-accent py-2 px-3 border"
+                >
+                  {interest}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <div className="space-y-4">
           <h1 className="font-bold text-2xl tracking-tight">Languages</h1>
-          <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
-            {user.languages.map((language, index) => (
-              <span
-                key={index}
-                className="rounded-lg bg-accent py-2 px-3 border"
-              >
-                {language}
-              </span>
-            ))}
-          </div>
+          {user.languages.length === 0 ? (
+            <div className="h-[100px] border rounded-xl flex items-center justify-center text-muted-foreground">
+              No languages on display
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+              {user.languages.map((language, index) => (
+                <span
+                  key={index}
+                  className="rounded-lg bg-accent py-2 px-3 border"
+                >
+                  {language}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </TabsContent>
     </Tabs>

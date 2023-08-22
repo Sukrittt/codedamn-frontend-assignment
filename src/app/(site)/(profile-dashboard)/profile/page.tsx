@@ -85,10 +85,12 @@ const ProfilePage = async () => {
             </div>
             <div className="text-muted-foreground flex flex-col gap-y-1">
               <span>{currentUser.bio}</span>
-              <div className="text-neutral-400 flex items-center">
-                <Icons.location className="h-4 w-4 mr-1" />
-                {currentUser.location}
-              </div>
+              {currentUser.location && (
+                <div className="text-neutral-400 flex items-center">
+                  <Icons.location className="h-4 w-4 mr-1" />
+                  {currentUser.location}
+                </div>
+              )}
             </div>
             {currentUser.techSkills.length > 0 && (
               <div className="flex gap-2 flex-wrap">
