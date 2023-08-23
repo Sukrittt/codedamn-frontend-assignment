@@ -41,7 +41,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
               </h1>
               <ProjectDropdown projectId={project.id} />
             </div>
-            <div className="text-muted-foreground text-sm">
+            <div className="text-muted-foreground text-sm mr-4 lg:mr-12">
               {project.skills.map((skill, index) => {
                 const showBullet = index !== project.skills.length - 1;
 

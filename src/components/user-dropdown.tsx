@@ -40,7 +40,21 @@ export const UserDropdown = ({
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         {children}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-[200px]">
+
+      <DropdownMenuContent align="end">
+        <div className="flex items-center justify-start gap-2 p-2 text-sm">
+          <div className="flex flex-col space-y-1 leading-none">
+            {user.name && <p className="font-medium">{user.name}</p>}
+            {user.email && (
+              <p className="w-[200px] truncate text-sm text-muted-foreground">
+                {user.email}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <DropdownMenuSeparator />
+
         {dropdownLinks.map((link) => (
           <DropdownMenuItem asChild key={link.id} className="cursor-pointer">
             <Link href={link.href}>
