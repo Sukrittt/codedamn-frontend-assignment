@@ -33,7 +33,7 @@ export const UserDropdown = ({ children }: { children: ReactNode }) => {
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         {children}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="w-[200px]">
         {dropdownLinks.map((link) => (
           <DropdownMenuItem asChild key={link.id} className="cursor-pointer">
             <Link href={link.href}>
