@@ -6,7 +6,7 @@ const Loading = () => {
       <div className="border rounded-xl overflow-hidden pb-6">
         <Skeleton className="h-[250px] w-full relative" />
         <div className="flex flex-col lg:flex-row gap-x-2 mx-8">
-          <Skeleton className="h-44 w-44 rounded-full -mt-[88px]" />
+          <Skeleton className="h-44 w-44 lg:w-56 rounded-full -mt-[88px]" />
           <div className="mt-8 flex flex-col gap-y-4 w-full">
             <div className="flex items-center justify-between">
               <Skeleton className="h-8 w-32" />
