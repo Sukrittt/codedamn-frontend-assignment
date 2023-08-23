@@ -25,7 +25,7 @@ const Certificates: FC<CertificatesProps> = ({ certificates }) => {
       {certificates.map((certificate) => (
         <div
           key={certificate.id}
-          className="rounded-lg flex flex-col gap-y-4 bg-accent p-4 tracking-tight border"
+          className="rounded-lg flex flex-col gap-y-4 bg-neutral-100 p-4 tracking-tight border"
         >
           <div>
             <div className="flex items-center justify-between">

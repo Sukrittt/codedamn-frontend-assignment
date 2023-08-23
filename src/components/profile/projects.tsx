@@ -22,7 +22,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
       {projects.map((project) => (
         <div
           key={project.id}
-          className="rounded-lg flex flex-col gap-y-4 bg-accent p-4 border"
+          className="rounded-lg flex flex-col gap-y-4 bg-neutral-100 p-4 border"
         >
           <div className="relative h-80 w-full">
             <Image

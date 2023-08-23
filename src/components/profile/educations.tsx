@@ -22,7 +22,7 @@ const Educations: FC<EducationsProps> = ({ educations }) => {
       {educations.map((education) => (
         <div
           key={education.id}
-          className="bg-accent border p-4 rounded-xl space-y-4"
+          className="bg-neutral-100 border p-4 rounded-xl space-y-4"
         >
           <div className="space-y-1">
             <div className="flex items-center justify-between">

@@ -32,13 +32,13 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
         <TabsList className="grid grid-cols-2 gap-6 w-[300px] bg-white">
           <TabsTrigger
             value="portfolio"
-            className="rounded-lg bg-accent font-medium tracking-tight"
+            className="rounded-lg bg-neutral-100 font-medium tracking-tight"
           >
             Portfolio
           </TabsTrigger>
           <TabsTrigger
             value="resume"
-            className="rounded-lg bg-accent font-medium tracking-tight"
+            className="rounded-lg bg-neutral-100 font-medium tracking-tight"
           >
             Resume
           </TabsTrigger>
@@ -67,7 +67,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
           <h1 className="font-bold text-2xl tracking-tight text-center">
             About me
           </h1>
-          <div className="rounded-lg flex flex-col gap-y-4 bg-accent py-4 px-6 border tracking-tight text-neutral-800 font-medium">
+          <div className="rounded-lg flex flex-col gap-y-4 bg-neutral-100 py-4 px-6 border tracking-tight text-neutral-800 font-medium">
             {user.about}
           </div>
         </div>
@@ -96,7 +96,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               {user.techSkills.map((skill, index) => (
                 <span
                   key={index}
-                  className="rounded-lg bg-accent py-2 px-3 border"
+                  className="rounded-lg bg-neutral-100 py-2 px-3 border"
                 >
                   {skill}
                 </span>
@@ -115,7 +115,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               {user.interests.map((interest, index) => (
                 <span
                   key={index}
-                  className="rounded-lg bg-accent py-2 px-3 border"
+                  className="rounded-lg bg-neutral-100 py-2 px-3 border"
                 >
                   {interest}
                 </span>
@@ -134,7 +134,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               {user.languages.map((language, index) => (
                 <span
                   key={index}
-                  className="rounded-lg bg-accent py-2 px-3 border"
+                  className="rounded-lg bg-neutral-100 py-2 px-3 border"
                 >
                   {language}
                 </span>

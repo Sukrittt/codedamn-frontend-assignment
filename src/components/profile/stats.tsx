@@ -35,7 +35,7 @@ const Stats = () => {
         {dummyStats.map((stat) => (
           <div
             key={stat.id}
-            className="border bg-accent rounded-xl grid grid-cols-8 p-2"
+            className="border bg-neutral-100 rounded-xl grid grid-cols-8 px-2 py-4"
           >
             <div className="flex items-center justify-center">
               <stat.icon />

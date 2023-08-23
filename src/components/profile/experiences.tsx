@@ -22,7 +22,7 @@ const Experiences: FC<ExperiencesProps> = ({ experiences }) => {
       {experiences.map((experience) => (
         <div
           key={experience.id}
-          className="bg-accent border p-4 rounded-xl space-y-4"
+          className="bg-neutral-100 border p-4 rounded-xl space-y-4"
         >
           <div className="space-y-1">
             <div className="flex items-center justify-between">
@@ -32,7 +32,7 @@ const Experiences: FC<ExperiencesProps> = ({ experiences }) => {
               <ExperienceDropdown experienceId={experience.id} />
             </div>
             <div className="flex items-center justify-between tracking-tight">
-              <div className="flex items-center gap-x-2 text-neutral-700">
+              <div className="flex items-center gap-x-1 text-neutral-700">
                 <span>{experience.location}</span>
                 <span>•</span>
                 <span>{experience.company}</span>

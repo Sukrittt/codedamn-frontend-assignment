@@ -110,7 +110,7 @@ const AddEducationSheet = () => {
       <SheetTrigger asChild>
         <Button
           variant="secondary"
-          className="tracking-tight font-medium"
+          className="tracking-tight font-medium bg-transparent"
           disabled={isLoading}
         >
           {isLoading ? (

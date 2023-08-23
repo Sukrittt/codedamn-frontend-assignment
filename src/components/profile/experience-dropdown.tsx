@@ -62,7 +62,7 @@ const ExperienceDropdown = ({ experienceId }: { experienceId: string }) => {
         <Button
           size="icon"
           variant="secondary"
-          className="shadow-sm"
+          className="bg-neutral-100 text-muted-foreground hover:text-neutral-800"
           disabled={isLoading}
         >
           {isLoading ? (

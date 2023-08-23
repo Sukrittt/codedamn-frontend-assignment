@@ -14,7 +14,7 @@ const PlayGrounds = () => {
         <h1 className="font-bold text-2xl tracking-tight">Playgrounds</h1>
         <Button
           variant="secondary"
-          className="tracking-tight font-medium"
+          className="tracking-tight font-medium bg-transparent"
           onClick={() => dummyFeatureToast()}
         >
           Create new playground
@@ -60,7 +60,7 @@ const PlaygroundDisplay = () => {
       {dummyPlaygrounds.map((playground, index) => (
         <div
           key={playground.id}
-          className="bg-accent border rounded-xl p-4 flex flex-col gap-y-2"
+          className="bg-neutral-100 border rounded-xl p-4 flex flex-col gap-y-2"
         >
           <h1 className="text-lg text-neutral-800 tracking-tight font-semibold">
             {playground.title}

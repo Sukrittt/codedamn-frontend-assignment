@@ -13,26 +13,42 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export const UserDropdown = ({ children }: { children: ReactNode }) => {
+  const dropdownLinks = [
+    {
+      id: 1,
+      label: "Profile",
+      href: "/profile",
+      icon: <Icons.user className="h-4 w-4" />,
+    },
+    {
+      id: 2,
+      label: "About",
+      href: "/about",
+      icon: <Icons.about className="h-4 w-4" />,
+    },
+  ];
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         {children}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem asChild className="cursor-pointer">
-          <Link href="/about">
-            <div className="flex items-center gap-x-2">
-              <Icons.about className="h-4 w-4" />
-              About
-            </div>
-          </Link>
-        </DropdownMenuItem>
+        {dropdownLinks.map((link) => (
+          <DropdownMenuItem asChild key={link.id} className="cursor-pointer">
+            <Link href={link.href}>
+              <div className="flex items-center gap-x-2">
+                {link.icon}
+                {link.label}
+              </div>
+            </Link>
+          </DropdownMenuItem>
+        ))}
 
         <DropdownMenuSeparator />
 
         <DropdownMenuItem
           onSelect={() => {
-            //   event.preventDefault();
             signOut({
               callbackUrl: `${window.location.origin}/sign-in`,
             });
