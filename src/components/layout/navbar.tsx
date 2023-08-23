@@ -22,7 +22,7 @@ const Navbar = async () => {
         <SearchBar />
         <Streaks />
         <Notifications />
-        <UserDropdown>
+        <UserDropdown user={session.user}>
           <UserAvatar user={session.user} className="h-8 w-8 cursor-pointer" />
         </UserDropdown>
       </div>

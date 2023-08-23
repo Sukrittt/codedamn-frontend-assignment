@@ -1,7 +1,8 @@
 "use client";
+import { ReactNode } from "react";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import { ReactNode } from "react";
+import { User } from "next-auth";
 
 import { Icons } from "@/components/icons";
 import {
@@ -12,7 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export const UserDropdown = ({ children }: { children: ReactNode }) => {
+export const UserDropdown = ({
+  children,
+  user,
+}: {
+  children: ReactNode;
+  user: Pick<User, "email" | "name">;
+}) => {
   const dropdownLinks = [
     {
       id: 1,
