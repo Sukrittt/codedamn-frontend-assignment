@@ -1,3 +1,10 @@
+export const siteConfig = {
+  name: "Codedamn Frontend Assignment",
+  description:
+    "Revolutionize your self-presentation with our Next.js web app, the result of my frontend intern assignment from Codedamn. Craft compelling job profiles effortlessly using Figma design as the foundation. Showcase images, projects, certificates, experiences, and education seamlessly for a standout professional portfolio.",
+  url: "https://codedamn-frontend-assignment-rho.vercel.app",
+};
+
 export const sidebarItems = [
   {
     id: 1,

@@ -1,7 +1,14 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
 import { features, socials, techStack } from "@/config";
 import { Separator } from "@/components/ui/separator";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about this project and its key features. Discover the technology stack I used to create this platform and explore the exciting functionalities it offers.",
+};
 
 const AboutPage = () => {
   return (
@@ -18,9 +25,16 @@ const AboutPage = () => {
         <Separator className="my-4" />
         <p className="font-light">
           Revolutionize your self-presentation with our Next.js web app, the
-          result of my frontend intern assignment from &rsquo;Codedamn&rsquo;.
-          Craft compelling job profiles effortlessly using Figma&rsquo;s design
-          as the foundation. Showcase images, projects, certificates,
+          result of my frontend intern assignment from{" "}
+          <Link
+            href="https://codedamn.com/"
+            target="_blank"
+            className="underline font-medium tracking-tight underline-offset-4"
+          >
+            Codedamn
+          </Link>
+          . Craft compelling job profiles effortlessly using Figma&rsquo;s
+          design as the foundation. Showcase images, projects, certificates,
           experiences, and education seamlessly for a standout professional
           portfolio.
         </p>

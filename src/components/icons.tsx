@@ -1,4 +1,5 @@
 import {
+  AlertTriangle,
   Bell,
   Bookmark,
   CalendarIcon,
@@ -95,4 +96,5 @@ export const Icons = {
   instagram: Instagram,
   twitter: Twitter,
   linkedin: Linkedin,
+  warning: AlertTriangle,
 };
