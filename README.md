@@ -1,7 +1,7 @@
 # [Codedamn Frontend Assignment](https://codedamn-frontend-assignment-rho.vercel.app)
 Showcase images, projects, certificates, experiences, and education seamlessly for a standout professional portfolio.
 
-[![Codedamn Frontend Assignment](./public/images/home-page-snapshot.png)](https://otakusphere.in)
+[![Codedamn Frontend Assignment](./public/images/home-page-snapshot.png)](https://codedamn-frontend-assignment-rho.vercel.app)
 
 ## Tech Stack
 
@@ -34,7 +34,7 @@ Showcase images, projects, certificates, experiences, and education seamlessly f
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Sukrittt/Otaku-Sphere.git
+git clone https://github.com/Sukrittt/codedamn-frontend-assignment.git
 ```
 
 2. Install dependencies using pnpm
