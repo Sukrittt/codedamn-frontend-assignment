@@ -15,9 +15,9 @@ const Navbar = async () => {
   return (
     <div className="flex items-center justify-between px-8 py-6">
       <Link href="/profile">
-        <Icons.logo />
+        <Icons.logo className="h-16 w-28 sm:w-44" />
       </Link>
-      <div className="flex items-center gap-x-8">
+      <div className="flex items-center gap-x-4 sm:gap-x-8">
         <SearchBar />
         <div className="flex gap-x-1">
           <Icons.thunderbolt className="h-5 w-5 text-primary" />

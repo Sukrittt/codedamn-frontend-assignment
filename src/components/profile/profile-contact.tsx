@@ -8,7 +8,7 @@ const ProfileContact = () => {
   const { dummyFeatureToast } = useCustomToast();
 
   return (
-    <div className="flex gap-x-2 items-center">
+    <div className="flex flex-row-reverse sm:flex-row gap-x-2 items-center">
       <Button onClick={() => dummyFeatureToast()} variant="ghost" size="icon">
         <Icons.bookmark className="h-4 w-4" />
       </Button>

@@ -92,7 +92,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               No skills on display
             </div>
           ) : (
-            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+            <div className="flex flex-wrap gap-2 tracking-tight text-neutral-800 font-medium">
               {user.techSkills.map((skill, index) => (
                 <span
                   key={index}
@@ -111,7 +111,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               No interests on display
             </div>
           ) : (
-            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+            <div className="flex flex-wrap gap-2 tracking-tight text-neutral-800 font-medium">
               {user.interests.map((interest, index) => (
                 <span
                   key={index}
@@ -130,7 +130,7 @@ export const TabSection = ({ user }: { user: ExtendedUser }) => {
               No languages on display
             </div>
           ) : (
-            <div className="flex flex-wrap gap-x-2 tracking-tight text-neutral-800 font-medium">
+            <div className="flex flex-wrap gap-2 tracking-tight text-neutral-800 font-medium">
               {user.languages.map((language, index) => (
                 <span
                   key={index}

@@ -36,7 +36,7 @@ const ProfilePage = async () => {
   if (!currentUser) redirect("/sign-in");
 
   return (
-    <div className="m-12 pb-12 lg:mx-36 space-y-8">
+    <div className="mx-6 sm:mx-12 pb-12 lg:mx-36 space-y-8">
       <div className="border rounded-xl overflow-hidden pb-6">
         <div
           className={cn("h-[250px] relative", {
@@ -55,7 +55,7 @@ const ProfilePage = async () => {
             />
           )}
         </div>
-        <div className="flex gap-x-2 mx-8">
+        <div className="flex flex-col lg:flex-row gap-x-2 mx-8">
           <UserAvatar
             user={currentUser}
             profileAvatar
@@ -63,7 +63,7 @@ const ProfilePage = async () => {
           />
           <div className="mt-8 flex flex-col gap-y-4 w-full">
             <div className="flex items-center justify-between">
-              <div className="flex gap-x-2 items-center">
+              <div className="flex gap-2 items-center flex-wrap">
                 <h1 className="text-4xl font-bold text-neutral-800">
                   {currentUser.name}
                 </h1>
@@ -106,7 +106,7 @@ const ProfilePage = async () => {
                 ))}
               </div>
             )}
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex flex-col gap-y-4 sm:gap-0 sm:flex-row sm:items-center sm:justify-between sm:mt-4">
               <SocialLinks user={currentUser} />
               <ProfileContact />
             </div>
@@ -156,7 +156,7 @@ const SocialLinks = ({ user }: { user: User }) => {
   ];
 
   return (
-    <div className="flex gap-x-2 mt-4 items-center">
+    <div className="flex gap-x-2 items-center">
       {socialLinks.map((social) => {
         if (!social.url) return;
 

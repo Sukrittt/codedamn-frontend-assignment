@@ -31,12 +31,12 @@ const Educations: FC<EducationsProps> = ({ educations }) => {
               </h1>
               <EducationDropdown educationId={education.id} />
             </div>
-            <div className="flex items-center justify-between tracking-tight">
-              <div className="flex items-center gap-x-2 text-neutral-700">
+            <div className="flex flex-col gap-y-1 sm:flex-row sm:items-center justify-between tracking-tight">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-x-2 text-neutral-700">
                 <span>{education.location}</span>
                 {education.degree && (
                   <>
-                    <span>•</span>
+                    <span className="hidden sm:block">•</span>
                     <span>{education.degree}</span>
                   </>
                 )}

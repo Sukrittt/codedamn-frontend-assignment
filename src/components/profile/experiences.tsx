@@ -31,10 +31,10 @@ const Experiences: FC<ExperiencesProps> = ({ experiences }) => {
               </h1>
               <ExperienceDropdown experienceId={experience.id} />
             </div>
-            <div className="flex items-center justify-between tracking-tight">
-              <div className="flex items-center gap-x-1 text-neutral-700">
+            <div className="flex flex-col gap-y-1 sm:flex-row sm:items-center justify-between tracking-tight">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-x-1 text-neutral-700">
                 <span>{experience.location}</span>
-                <span>•</span>
+                <span className="hidden sm:block">•</span>
                 <span>{experience.company}</span>
               </div>
               <div className="flex items-center gap-x-1 text-sm font-medium text-neutral-800">
