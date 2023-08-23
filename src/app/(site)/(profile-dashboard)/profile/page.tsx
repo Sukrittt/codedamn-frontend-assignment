@@ -17,6 +17,7 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
 const ProfilePage = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const session = await getAuthSession();
 
   if (!session) redirect("/sign-in");

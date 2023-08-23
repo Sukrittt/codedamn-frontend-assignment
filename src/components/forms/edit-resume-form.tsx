@@ -165,7 +165,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
   return (
     <Form {...form}>
       <form
-        className="grid w-full max-w-xl gap-5 mb-36"
+        className="grid w-full max-w-xl gap-5 mb-36 px-2 sm:px-0"
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <FormField
