@@ -14,6 +14,7 @@ import { useDebounce } from "@/hooks/use-debounce";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
+import { useCustomToast } from "@/hooks/use-custom-toast";
 
 const mockCourses = [
   {
@@ -35,6 +36,8 @@ export const SearchBar = () => {
   const [query, setQuery] = useState("");
   const debouncedQuery = useDebounce(query, 300);
   const [loading, setLoading] = useState(false);
+
+  const { dummyFeatureToast } = useCustomToast();
 
   const [data, setData] = useState<{ id: number; courseName: string }[]>([]);
 
@@ -109,6 +112,7 @@ export const SearchBar = () => {
                     key={queryItem.id}
                     className="cursor-pointer"
                     onSelect={() => {
+                      dummyFeatureToast();
                       setIsOpen(false);
                       setQuery("");
                     }}
