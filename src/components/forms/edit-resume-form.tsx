@@ -237,7 +237,7 @@ const EditResumeForm = ({ user }: { user: User }) => {
 
         <div className="space-y-1">
           <FormItem>
-            <FormLabel>Teck skills</FormLabel>
+            <FormLabel>Tech skills</FormLabel>
             <Input
               placeholder="Enter the skills required in this project."
               value={eachTechSkill}
